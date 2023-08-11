@@ -1,0 +1,788 @@
+Delivered-To: ikushnarenko@tradingview.com
+Received: by 2002:a05:7010:f896:b0:36a:db2a:ecc0 with SMTP id pb22csp2837754mdb;
+        Mon, 17 Jul 2023 05:32:45 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFJYDpd6sRYTS/4WlnqUBhSy0X89OaGkbyIyuQAZpLHozENJoGjn+RyGaq/UajdpsVt1zvK
+X-Received: by 2002:ad4:514b:0:b0:62d:fddb:1856 with SMTP id g11-20020ad4514b000000b0062dfddb1856mr10509187qvq.43.1689597164956;
+        Mon, 17 Jul 2023 05:32:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689597164; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZIVaTuGAghkDUZPXtQhSVnEEX8l7YxHEz3quY01Br4Uwn49xPvLh5/XEYKJLlT4pi8
+         jnA7+ka1YPcy+8Qq+3q05InmDHXmxQdM8WfCrmUUYfBEPZNdI09caXwDLYxq6mSKH/ZE
+         AfARY/hf0L4YMpUmgQsXgUC6I0D4z3Urmht3jZHF0oWLoGIj2A2oaC8gylvbPYMUPomC
+         ZGIr6SJbADqIFOD5AzhkSr2U5HQAIl023gINyCgu+CVdkT1UYB6F1o8A+YN8aXc0EK0o
+         m135nLFBoxU46xs1ZXcrVa8Ng6jsvjZoRQEP2vMA65BHB87Jkszd3YhbUzxPrMrRdHfW
+         gILg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:date:to:from:subject
+         :content-transfer-encoding:mime-version:dkim-signature
+         :dkim-signature;
+        bh=Xis4W69ym3ccT7rOX9pWdBItkmJWXOGIiZhxVjYxKJo=;
+        fh=CyBXTSEsf3PkTmWZtgG3Hz0broN3E6UYyD6NKYIIeqg=;
+        b=lnTaJKKv7r4Fufa65jqhkm/5vajlNSjF9vVjH/bVyDOoIrRJ4Jads2+1sDrw94r9sq
+         BnDTyDAgY0WZrOJecur22y0/Mx+PnIominUmEEM8ssCBJRdFS3/fPrtZYNY+IbZUQbhc
+         WyNSIAPlSJGDGmYuuRlOS5j6nLr9TrS4/HGBW6530hr0BjyDtpl+Dzijbc7Ih//25zcx
+         7hgMNmX2W+tdPaGcae7HWn0ribEVQpnGTt/d8psHZIzH/2pk7M8HAJMymh2/1paiT9hm
+         GHBPXK8uwhfhLBR7M515O+hIx0w8YMK5dvWn7bSIOyLasbMxNc4SN/MLuxPNqJbZDHcO
+         /I5w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@tradingview.com header.s=7u4hxpdmjvdxzh5nxtwfxsvrdkidotgr header.b="bpcT/3Kn";
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b="iWZH/+zz";
+       spf=pass (google.com: domain of 0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com designates 54.240.8.54 as permitted sender) smtp.mailfrom=0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=tradingview.com
+Return-Path: <0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com>
+Received: from a8-54.smtp-out.amazonses.com (a8-54.smtp-out.amazonses.com. [54.240.8.54])
+        by mx.google.com with ESMTPS id z5-20020a0cda85000000b006238da10bffsi4556284qvj.161.2023.07.17.05.32.44
+        for <ikushnarenko@tradingview.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Jul 2023 05:32:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com designates 54.240.8.54 as permitted sender) client-ip=54.240.8.54;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@tradingview.com header.s=7u4hxpdmjvdxzh5nxtwfxsvrdkidotgr header.b="bpcT/3Kn";
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b="iWZH/+zz";
+       spf=pass (google.com: domain of 0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com designates 54.240.8.54 as permitted sender) smtp.mailfrom=0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@east-smtp.tradingview.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=tradingview.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=7u4hxpdmjvdxzh5nxtwfxsvrdkidotgr; d=tradingview.com;
+	t=1689597164;
+	h=Content-Type:MIME-Version:Content-Transfer-Encoding:Subject:From:To:Date:Message-ID;
+	bh=8jL+Y14R+rDrckNRdCnGpPC7NZjYjvPdaY4cvnONF3w=;
+	b=bpcT/3Kn1yRXlR8UwF4npMf/ZMrupTPgo0knr6IYVb9XWDQRfsDCPvDmJOb5o/Qa
+	utvbsV9n7nOiOSV1yN5o0YW6uiQ2ItxtJcd5N2QPRVY9hMWvUTeDCHj+geKhEiGlGeE
+	64d7AHt2/AZ0wFMTdgLxIR4bXFLhZNPZyxEjTCik=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1689597164;
+	h=Content-Type:MIME-Version:Content-Transfer-Encoding:Subject:From:To:Date:Message-ID:Feedback-ID;
+	bh=8jL+Y14R+rDrckNRdCnGpPC7NZjYjvPdaY4cvnONF3w=;
+	b=iWZH/+zzes7ZiGrNO5Xkqdu9ELbMiGfZCOL4BvQ8Rp5HsTKh1HlLeJWeOBvbFLoq
+	bKTOXNsU+za+CYuntDA3hn5r5mnUC5jIVDvo6LdoqvpVFiKbmAbbgx9omVqrvN0KNUd
+	XAsuRBvej7thTEIi+jdc51jdvv61+9ZxYIt2Bvbw=
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: European flash sale
+From: TradingView <noreply@tradingview.com>
+To: ikushnarenko@tradingview.com
+Date: Mon, 17 Jul 2023 12:32:44 +0000
+Message-ID: <0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000@email.amazonses.com>
+Feedback-ID: 1.us-east-1.dJX2xx0zsf93o2zkSlILUU/8EdBfridsykCSgjgyirk=:AmazonSES
+X-SES-Outgoing: 2023.07.17-54.240.8.54
+
+
+<!DOCTYPE html>
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <!--[if gte mso 9]> <xml> <o:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml> <![endif]-->
+  <title>European sale</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" ems:notrack="true" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    ems:notrack="true" ems:notrack="true" rel="stylesheet" />
+  <style type="text/css">
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+
+    a[href^="tel"]:hover {
+      text-decoration: none !important;
+    }
+
+    table td {
+      mso-line-height-rule: exactly;
+    }
+
+    a img {
+      border: none;
+    }
+
+    b,
+    strong {
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    th {
+      padding: 0;
+    }
+
+    td {
+      text-decoration: none;
+    }
+
+    a {
+      outline: none;
+      color: #2962FF;
+      text-decoration: underline;
+    }
+
+    .highlight-phone {
+      color: inherit;
+      border: none;
+    }
+
+    .nl span,
+    .nl a {
+      color: inherit !important;
+      text-decoration: none !important;
+      border: none !important;
+    }
+
+    a:hover {
+      text-decoration: none !important;
+    }
+
+    .h-u a {
+      text-decoration: none;
+    }
+
+    .h-u a:hover {
+      text-decoration: underline !important;
+    }
+
+    .btn-01:hover {
+      background-color: #e8e7e6 !important;
+    }
+
+    .active a:hover {
+      opacity: 0.8;
+    }
+
+    .btn-01,
+    .active a {
+      transition: all 0.3s ease;
+    }
+
+    ul {
+      Margin: 0 0 0 20px;
+      padding: 0;
+    }
+
+    img+div {
+      display: none !important;
+      width: 0px !important;
+      height: 0px !important;
+      opacity: 0 !important;
+    }
+
+    .feedback:hover {
+      border: 1px solid #bebebe !important;
+    }
+
+    @media only screen and (max-width:375px) and (min-width:374px) {
+      .gmail-fix {
+        min-width: 374px !important;
+      }
+    }
+
+    @media only screen and (max-width:414px) and (min-width:413px) {
+      .gmail-fix {
+        min-width: 413px !important;
+      }
+    }
+
+    @media only screen and (max-width:500px) {
+      .flexible {
+        width: 100% !important;
+      }
+
+      .img-flex img {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .table-holder {
+        display: table !important;
+        width: 100% !important;
+      }
+
+      .thead {
+        display: table-header-group !important;
+        width: 100% !important;
+      }
+
+      .tfoot {
+        display: table-footer-group !important;
+        width: 100% !important;
+      }
+
+      .tflex {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .hide {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+      }
+
+      .tc {
+        margin: 0 auto !important;
+        float: none !important;
+      }
+
+      .tl {
+        float: none !important;
+        text-align: left !important;
+      }
+
+      .ac {
+        text-align: center !important;
+      }
+
+      .h-0 {
+        height: 0 !important;
+      }
+
+      .p-0 {
+        padding: 0 !important;
+      }
+
+      .p-20 {
+        padding: 20px !important;
+      }
+
+      .p-30 {
+        padding: 30px !important;
+      }
+
+      .plr-0 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .plr-10 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+      }
+
+      .plr-15 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+
+      .plr-20 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .pt-20 {
+        padding-top: 20px !important;
+      }
+
+      .pt-30 {
+        padding-top: 30px !important;
+      }
+
+      .pb-20 {
+        padding-bottom: 20px !important;
+      }
+
+      .pb-30 {
+        padding-bottom: 30px !important;
+      }
+
+      .fs-16 {
+        font-size: 16px !important;
+        line-height: 20px !important;
+      }
+
+      .fs-18 {
+        font-size: 18px !important;
+        line-height: 28px !important;
+      }
+
+      .fs-20 {
+        font-size: 20px !important;
+        line-height: 30px !important;
+      }
+
+      .fs-24 {
+        font-size: 24px !important;
+        line-height: 32px !important;
+      }
+
+      .fs-26 {
+        font-size: 26px !important;
+        line-height: 100% !important;
+      }
+
+      .fs-28 {
+        font-size: 28px !important;
+        line-height: 36px !important;
+      }
+
+      .fs-36 {
+        font-size: 36px !important;
+        line-height: 42px !important;
+      }
+
+      .fs-60 {
+        font-size: 60px !important;
+        line-height: 100% !important;
+      }
+
+      .al {
+        text-align: left !important;
+      }
+
+      .feedback-text {
+        padding-bottom: 14px !important;
+      }
+    }
+
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+
+    [data-ogsc] .dark-img {
+      display: block !important;
+      width: auto !important;
+      overflow: visible !important;
+      float: none !important;
+      max-height: inherit !important;
+      max-width: inherit !important;
+      line-height: auto !important;
+      margin-top: 0px !important;
+      visibility: inherit !important;
+    }
+
+    [data-ogsc] .light-img {
+      display: none;
+      display: none !important;
+    }
+
+    [data-ogsc] .darkmode0 {
+      background-color: #1f212d !important;
+    }
+
+    [data-ogsc] .darkmode1 {
+      background-color: #141622 !important;
+    }
+
+    [data-ogsc] .darkmode2 {
+      background-color: #1f212d !important;
+    }
+
+    [data-ogsc] h1,
+    [data-ogsc] h2,
+    [data-ogsc] h3,
+    [data-ogsc] p,
+    [data-ogsc] span,
+    [data-ogsc] td,
+    [data-ogsc] b {
+      color: #ffffff !important;
+    }
+
+    [data-ogsc] .link {
+      color: #2962FF !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .dark-img {
+        display: block !important;
+        width: auto !important;
+        overflow: visible !important;
+        float: none !important;
+        max-height: inherit !important;
+        max-width: inherit !important;
+        line-height: auto !important;
+        margin-top: 0px !important;
+        visibility: inherit !important;
+      }
+
+      .light-img {
+        display: none;
+        display: none !important;
+      }
+
+      .darkmode0 {
+        background-color: #1f212d !important;
+      }
+
+      .darkmode1 {
+        background-color: #141622 !important;
+      }
+
+      .darkmode2 {
+        background-color: #1f212d !important;
+      }
+
+      .darkmode3 {
+        background-color: #3d3e46 !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      span,
+      td,
+      b {
+        color: #ffffff !important;
+      }
+
+      .button {
+        color: #2962FF !important;
+      }
+
+      .link {
+        color: #2962FF !important;
+      }
+    }
+
+    u+.darkmode0 .gmail-blend-exclusion-blk {
+      background-color: #000;
+      mix-blend-mode: screen;
+    }
+
+    u+.darkmode0 .gmail-blend-difference-blk {
+      background-color: #000;
+      mix-blend-mode: difference;
+      color: #ffffff;
+    }
+  </style>
+  <!--[if (mso)|(mso 16)]> <style type="text/css"> a { text-decoration:none; } .keep-white { mso-style-textfill-type:gradient; mso-style-textfill-fill-gradientfill-stoplist:"0 #FFFFFF 0 100000,100000 #FFFFFF 0 100000"; color:#000000 !important; } </style> <![endif]-->
+</head>
+
+<body class="darkmode0" bgcolor="#000000"
+  style="margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#000000; color: #ffffff;">
+  <div
+    style="display:none!important;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all">
+    It is time to launch a Europe-wide special flash sale!
+  </div>
+  <table class="gmail-fix" width="100%" style="min-width:320px;" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <table class="flexible" width="680" align="center" style="margin:0 auto; width: 680px;" cellpadding="0"
+          cellspacing="0" role="presentation">
+          <tr>
+            <td class="darkmode0" bgcolor="#000000"
+              style="background-color:#000000; background-image: url(https://s3.tradingview.com/mail/bg-dark.jpeg) !important;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td height="24" style="font-size:24px; line-height:24px;height: 24px;">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <th class="tflex" width="200" align="left" style="vertical-align:top; padding:0;">
+                          <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td align="center" class="ac"> <a target="blank"
+                                  href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2Fu%2FTradingView%2F/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/F02RDd41SZ1oB_UArfs0PO0GM1HhUGc4CYn6f9A7OYM=309"> <img
+                                    src="https://s3.tradingview.com/mail/logo-tv-white.png"
+                                    style="vertical-align:top; height: auto; width: 160px;" border="0" width="160"
+                                    alt="TradingView" /> </a> </td>
+                            </tr>
+                          </table>
+                        </th>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="24" style="font-size:24px; line-height:24px;height: 24px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <!--[if (gte mso 9)|(IE)]>
+<table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td align="center" valign="top" width="600">
+<![endif]-->
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                      style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; max-width: 600px; border-collapse: collapse !important;">
+                      <tr>
+                        <td align="center" valign="top"
+                          style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; background-color: #000000; background-size: 100%; background-image: url('https://s3.tradingview.com/mail/europeansale.jpg'); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover; text-align: center; height: 300px;"
+                          bgcolor="#000000" background="https://s3.tradingview.com/mail/europeansale.jpg">
+                          <!--[if gte mso 9]>
+<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
+<v:fill type="frame" src="https://s3.tradingview.com/mail/europeansale.jpg" color="#131722"/>
+<v:textbox style="mso-fit-shape-to-text:true">
+<![endif]-->
+                         <div style="margin:0px auto;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                  style="width:100%;margin:0;">
+                                  <tbody>
+                                    <tr>
+                                      <td align="center" style="font-size:0;word-break:break-word; padding-top: 32px;">
+                                        <div style="text-align:center;">
+                                          <p class="fs-26" style="Margin:0;text-align:center;mso-line-height-alt:100%; font-weight: 700; font-size: 40px; line-height: 100%; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff; padding-bottom: 8px;">
+                                            <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">European </span></span><span style="color: #2962FF">sale</span>
+                                            </p>
+                                              <p class="fs-18" style="Margin:0;text-align:center;mso-line-height-alt:100%;text-transform: uppercase; font-weight: 600; font-size: 20px; line-height: 100%; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                                                <span style="color: #2962FF">Starts now</span></p>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td height="40" style="font-size:40px; line-height:40px;height: 40px;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center" style="font-size:0;padding-bottom:16px;word-break:break-word;">
+                                        <div style="text-align:center;">
+                                          <p class="fs-18" style="Margin:0;text-align:center;mso-line-height-alt:100%; font-weight: 400; font-size: 20px; line-height: 100%; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #D1D4DC;">
+                                            <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">Get up to</span></span></p>
+                                                  <p class="fs-60" style="Margin:0;text-align:center;mso-line-height-alt:100%;text-transform: uppercase; font-weight: 700; font-size: 80px; line-height: 100%; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                                                    <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">65% OFF</span></span></p>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                          <!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+                        </td>
+                      </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+                  </td>
+                </tr>
+
+                <tr>
+                  <td height="32" class="plr-20"
+                    style="padding-left:40px;padding-right:40px;font-size:40px; line-height:32px;height:32px;"> &nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td align="center">
+                          <p class="fs-18"
+                            style="Margin: 0; padding: 0; font-weight: 400; font-size: 20px; line-height:30px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                            <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">
+                              It is time to launch a Europe-wide special flash sale! From today until July 23rd, traders from the EU (+ UK, Norway, and Switzerland) can get a special discount of up to 65% off their plans.
+                              <br><br>
+                              Don't miss it – it's only available from July 17-23.
+                              </span></span>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td height="32" style="font-size:32px; line-height:32px; height: 32px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-15" style="padding: 0px 20px 0px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td>
+                          <table align="center" style="margin: 0 auto;" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td align="center">
+                                <a class="keep-white" rel="noopener" target="_blank"
+                                  href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2Fgopro%2F%3Fcoupon=EUROPESALEA2023%26coupon_billing_cycle=y%26source=europesale_offer_email%26feature=cta_europesale_offer%26utm_source=notification_email%26utm_medium=email%26utm_campaign=europesale_offer/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/7j89PYOi8NH6mKePKTnjSINBGume76i-GLuQ7HC9Pt8=309"
+                                  style="font-weight:590;font-size: 24px;line-height: 28px;background-color:#2962FF; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;padding:28px 48px; color: #ffffff; border-radius: 56px; display: block; mso-padding-alt: 0;">
+                                  <!--[if mso]>
+                                  <i style="letter-spacing: 25px; mso-font-width: -100%; mso-text-raise: 30pt;">&nbsp;</i>
+                                  <![endif]-->
+                                  <span style="mso-text-raise: 15pt;"><span class="gmail-blend-exclusion-blk"><span
+                                        class="gmail-blend-difference-blk">Explore offers</span></span></span>
+                                  <!--[if mso]>
+                                  <i style="letter-spacing: 25px; mso-font-width: -100%;">&nbsp;</i>
+                                  <![endif]-->
+                                </a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td height="48" style="font-size:48px; line-height:48px; height: 48px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td align="center" style="padding-top: 12px;">
+                          <p class="fs-16"
+                            style="Margin: 0; padding: 0; font-weight: 400; font-size: 18px; line-height:28px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff; padding-bottom: 12px;">
+                            <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">
+                              It's perfect timing to get access to TradingView Supercharts with a solid discount – don’t delay!
+                              <br><br>
+                              If you already have a subscription, you can participate in the Sale too and get an additional year at the special price! You will find the offers on the web and desktop versions - just click on the Explore offers button! For more information, please refer to the Promo FAQ.
+                              <br><br>
+                              Team TradingView
+                              </span></span>
+                          </p>
+                          <p class="fs-16"
+                            style="Margin: 0; padding: 0; font-weight: 400; font-size: 20px; line-height:24px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                            <a href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2F%3Fsolution=43000706601/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/7PL6lOQ9wHnROKQFYD4dqbiNNuK7TPLXCh1qE3BFwQM=309" style="text-decoration: none;" target="_blank">Promo FAQ</a>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-20" style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td height="48" style="font-size:48px; line-height:48px; height: 48px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td height="2"
+                    style="line-height: 2px; max-height: 2px; height: 2px; border-bottom: 2px solid #434651;"> &nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td class="plr-15" style="padding: 0px 40px 16px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="pb-20" style="padding: 0 0 24px;">
+                          <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="pb-20" style="padding: 30px 0 24px; border-bottom: 1px solid #434651;">
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                  <tr>
+                                    <td style="padding:0 0 25px;">
+                                      <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                          <th class="tflex" width="290" align="left"
+                                            style="vertical-align:top; padding:0;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td class="ac"
+                                                  style="font-family:-apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; font-size: 16px;line-height: 24px; font-weight:400; color:#868993;"
+                                                  e-editable="thanks"> Thanks for reading, <br /> The TradingView Team
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </th>
+                                          <th class="tflex" width="20" height="20" align="left"
+                                            style="vertical-align:top; padding:0;"></th>
+                                          <th class="tflex" width="290" align="left"
+                                            style="vertical-align:top; padding:0;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td class="ac" align="right"
+                                                  style="font-family:-apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; font-size: 16px;line-height: 24px; font-weight:400;  color:#868993;"
+                                                  e-editable="address"> 470 Olde Worthington Rd., Suite 200<br />
+                                                  Westerville&nbsp;OH&nbsp;43082 </td>
+                                              </tr>
+                                            </table>
+                                          </th>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                          <th class="tflex" width="280" align="left"
+                                            style="vertical-align:top; padding:0;">
+                                            <table class="tc" width="285" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td class="h-u ac"
+                                                  style="font-family:-apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; font-size: 14px;line-height: 22px; font-weight:400; color:#1E53E5;"
+                                                  e-editable="apps"> <a style="text-decoration:none;color:#1E53E5;"
+                                                    target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fitunes.apple.com%2Fus%2Fapp%2Ftradingview-trading-community-charts-and-quotes%2Fid1205990992/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/LYRzrX-6a8TUQ5bmHA7Hjqdooh_Rj-PHLypza2PyHns=309">App
+                                                    Store</a> &nbsp; &nbsp; <a
+                                                    style="text-decoration:none;color:#1E53E5;" target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid=com.tradingview.tradingviewapp/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/z9e0bxWvJUd0Pm3SY6eWTcX1NI_h0n5hzIfK9enUsUs=309">Google
+                                                    Play</a> &nbsp; &nbsp; <a
+                                                    style="text-decoration:none;color:#1E53E5;" target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2Fdesktop%2F/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/Nq4Le8ULqdgauZ9guC8ItNd2ZMB07ZSj0WRtfjYSfRw=309">Desktop app</a> </td>
+                                              </tr>
+                                            </table>
+                                          </th>
+                                          <th class="tflex" width="20" height="25" align="left"
+                                            style="vertical-align:top; padding:0;"></th>
+                                          <th class="tflex" width="300" align="left"
+                                            style="vertical-align:top; padding:0;">
+                                            <table class="tc" align="right" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td class="h-u ac"
+                                                  style="font-family:-apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; font-size: 14px;line-height: 22px; font-weight:400; color:#1E53E5;"
+                                                  e-editable="smm"> <a style="text-decoration:none;color:#1E53E5;"
+                                                    target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.facebook.com%2Ftradingview%2F/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/PPoxhndMyYFMhsuzOB307gSFm5MqiYoug6v-v6E_yds=309">Facebook</a> &nbsp;
+                                                  &nbsp; <a style="text-decoration:none;color:#1E53E5;" target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.youtube.com%2Fchannel%2FUCfOflihrkOKDQZ_ZKtF2VfQ/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/_wAjPbqYtOStoSKXz_-ggOiZD7WYDFxd8zUbRjZ_N0U=309">YouTube</a>
+                                                  &nbsp; &nbsp; <a style="text-decoration:none;color:#1E53E5;"
+                                                    target="blank"
+                                                    href="https://link-n.tradingview.com/CL0/https:%2F%2Fwww.linkedin.com%2Fcompany%2Ftradingview%2F/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/MzBTdforJ0P2PWb7kzvHz8AmWSZhEpOoLhS0avdvUgY=309">LinkedIn</a>
+                                                  &nbsp; &nbsp; <a style="text-decoration:none;color:#1E53E5;"
+                                                    target="blank" href="https://link-n.tradingview.com/CL0/https:%2F%2Ftwitter.com%2Ftradingview%2F/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/cIO_D4e0ZB_kZNR9koHJvYESD6pvgdzPSuw7j4OMnoE=309">Twitter</a>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </th>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="h-u"
+                          style="font-family:-apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; font-size: 14px;line-height: 18px; font-weight:400; color:#868993; padding: 0 0 10px;"
+                          e-editable="footer"> This email was sent to <a style="text-decoration:none;color:#1E53E5;"
+                            href="mailto:ikushnarenko@tradingview.com" ems:notrack="true">ikushnarenko@tradingview.com</a> because on ,
+                          you signed up at <a style="text-decoration:none;color:#1E53E5;"
+                            href="https://link-n.tradingview.com/CL0/https:%2F%2Fru.tradingview.com/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/KC7xAfXh_5aHCGg8xqZ5ZqIUkU5B2zVYu9tu3873w-0=309" target="_blank">TradingView.com</a>. To manage your subscription options or to unsubscribe go to&nbsp;<a href="https://link-n.tradingview.com/CL0/https:%2F%2Fru.tradingview.com%2Fu%2Fikushnarenko1337%2F%3Futm_source=notification_email%26utm_medium=email%26utm_campaign=summer_sale%23notifications/1/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/1fGmdQk2-v8dwzT9aA8VP-2rJz5Vtxjntyw4hcDQ2Ns=309">your profile</a>.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+<img alt="" src="http://link-n.tradingview.com/CI0/0100018963d6badf-bbf97228-c0a8-436b-a23a-4da9a0c192e7-000000/t4BGAuZ3yBt1bn6_crhrS__bl7GDyoTP3z_flv4263g=309" style="display: none; width: 1px; height: 1px;">
+</body>
+
+</html>
