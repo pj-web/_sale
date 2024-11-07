@@ -228,6 +228,10 @@
         font-size: 18px !important;
         line-height: 28px !important;
       }
+      .fs-18-gradient {
+        font-size: 18px !important;
+        line-height: 20px !important;
+      }
 
       .fs-20 {
         font-size: 20px !important;
@@ -272,6 +276,10 @@
         height: 4px !important;
       }
 
+      .h-14 {
+        line-height:14px !important; 
+        height: 14px !important;
+      }
       .h-16 {
         line-height:16px !important; 
         height: 16px !important;
@@ -283,6 +291,14 @@
       .h-20 {
         line-height: 20px !important; 
         height: 20px !important;
+      }
+      .h-24 {
+        line-height: 24px !important; 
+        height: 24px !important;
+      }
+      .h-32 {
+        line-height: 32px !important; 
+        height: 32px !important;
       }
       .h-48 {
         line-height: 48px !important; 
@@ -306,10 +322,10 @@
         text-decoration: none !important;
       }
       .mobile-bg {
-        height: 300px !important;
+        height: 260px !important;
         /* background-image: url('https://mpics.tradingview.com/pics/sale/anti-churm-bg-mob.jpg') !important; */
         background-size: 145% !important;
-        background-position: 50% 100% !important;
+        background-position: 50% 10% !important;
       }
 
       /* h1 {
@@ -317,25 +333,67 @@
       } */
     }
 
-    @media only screen and (max-width:370px) {
+    @media only screen and (max-width:380px) {
       .mobile-bg {
-        background-size: 170% !important;
+        background-size: 190% !important;
       }
     }
 
   </style>
-  <style id="gmailWebmail">
-     
-    u + .iph-gmail-dk .gradient-cover {background: linear-gradient(to right, #FF2E3E 44%, #FC5901 72%, #FF9800 100%);
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;overflow:hidden;
- }
- u+ .iph-gmail-dk .gradient{
-   background-color: #000000;mix-blend-mode: multiply;
- }
+   <style>
+    a[x-apple-data-detectors=true],
+    [x-apple-data-detectors-type="calendar-event"] {
+      border-bottom: 0 !important;
+      cursor: default !important;
+      color: inherit !important;
+      -webkit-text-decoration-color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
+        /*Gmail*/
+    u+.body a {
+      color: inherit;
+      text-decoration: none;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+    /*Samsung Mail*/
+    #MessageViewBody a {
+      color: inherit;
+      text-decoration: none;
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
 
-  
+  </style>
+  <style id="gmailWebmail">
+    @media only screen and (min-width: 1025px) {
+
+      u + .iph-gmail-dk .gradient-cover {background: linear-gradient(to right, #FF2E3E 44%, #FC5901 72%, #FF9800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;overflow:hidden;
+      }
+      u+ .iph-gmail-dk .gradient{
+        background-color: #000000;mix-blend-mode: multiply;
+      }
+    }
  </style>
+
+ <style>
+  @media screen and (max-width: 480px) {
+    u+ .iph-gmail-dk .gradient {
+      color: #FA3F22;
+      }
+  }
+ </style>
+
+
  <style id="gmailAndroid">
  div > u + .iph-gmail-dk .gradient-cover {background: linear-gradient(to right, #FF2E3E 44%, #FC5901 72%, #FF9800 100%);
  -webkit-background-clip: text;
@@ -346,15 +404,118 @@
    background-color: #000000; mix-blend-mode: multiply;
  }
  </style>
- <style>
+  <!-- <style>
+    
+    [data-ogsc] .gradient {
+     color: #FF2E3E;
+    }
+    .gradient\0{
+      color: #FF2E3E;
+    }
+    </style>  -->
+
+<style id="webkit">
+  @supports(-webkit-background-clip: text) {
+  .gradient{
+    background: linear-gradient(to right, #FF2E3E 44%, #FC5901 72%, #FF9800 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;overflow:hidden;
+  }
+  }
+  </style>
+    <!-- <style>
+      div > .iph-gmail-dk .gradient-cover{
+          background-color: #000000; mix-blend-mode: multiply;
+ }
+      div > .iph-gmail-dk .gradient{
+        color: #FF2E3E;
+ }
+    </style> -->
+  <!-- <style>
+    .gradient { 
+      color: #FF2E3E; !yahoo 
+  }
+  </style> -->
+ <!-- <style>
+
+@media screen and (max-width: 480px) {
   @supports (-webkit-overflow-scrolling:touch) and (color:#ffff) {
     u+.iph-gmail-dk .gradient-cover {
       background: #000000 !important;
       background-image: url('https://s3.tradingview.com/mail/bg-dark.jpeg') !important;
       color: #F23645;
     }
+
+    u+ .iph-gmail-dk .gradient{
+      background-color: #ffffff;mix-blend-mode: multiply;
  }
+}}
+ 
  </style>
+
+<style>
+@media screen and (max-width: 480px) {
+  [class^="apple-mail"] .gradient-cover {
+      background: #000000 !important;
+      background-image: url('https://s3.tradingview.com/mail/bg-dark.jpeg') !important;
+      color: #F23645;
+    }
+  [class^="apple-mail"] .gradient{
+      background-color: #ffffff;mix-blend-mode: multiply;
+ }
+}
+</style> -->
+<!-- <style>
+@supports (-webkit-overflow-scrolling:touch) and (color:#ffff) {
+  @media screen and (max-width: 480px) {
+    @media (prefers-color-scheme: dark) {
+      u+.iph-gmail-dk .gradient-cover {
+        background: #000000 !important;
+        background-image: url('https://s3.tradingview.com/mail/bg-dark.jpeg') !important;
+        color: #F23645;
+      }
+
+      u+ .iph-gmail-dk .gradient{
+        background-color: #ffffff;mix-blend-mode: multiply;
+      }
+    }
+  }
+}
+</style> -->
+
+<!-- <style>
+  @media only screen and (max-device-width: 480px) {
+    @supports (-webkit-overflow-scrolling:touch) and (color:#ffff) and (-webkit-background-clip: text) {
+    u+.iph-gmail-dk .gradient-cover {
+        background: #000000 !important;
+        background-image: url('https://s3.tradingview.com/mail/bg-dark.jpeg') !important;
+        color: #F23645;
+      }
+
+      u+ .iph-gmail-dk .gradient{
+        background-color: #ffffff;mix-blend-mode: multiply;
+      }
+    }
+  }
+</style> -->
+<!-- <style>
+  @media only screen and (max-device-width: 480px) {
+    @supports (aspect-ratio: 1 / 1) {
+    u+.iph-gmail-dk .gradient-cover {
+        background: #000000 !important;
+        background-image: url('https://s3.tradingview.com/mail/bg-dark.jpeg') !important;
+        color: #F23645;
+      }
+
+      u+ .iph-gmail-dk .gradient{
+        background-color: #ffffff;mix-blend-mode: multiply;
+      }
+    }
+  }
+</style> -->
+
+
+
   <!--[if (mso)|(mso 16)]> <style type="text/css"> a { text-decoration:none; } .keep-white { mso-style-textfill-type:gradient; mso-style-textfill-fill-gradientfill-stoplist:"0 #FFFFFF 0 100000,100000 #FFFFFF 0 100000"; color:#000000 !important; } 
      .gradient {
         mso-style-textfill-type: gradient;
@@ -380,11 +541,11 @@
             <td bgcolor="#000000" style="background-color:#000000; background-image: url(https://s3.tradingview.com/mail/bg-dark.jpeg) !important;">
               <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                 <tr>
-                  <td height="24" style="font-size:24px; line-height:24px;height: 24px;">&nbsp;</td>
-                </tr>
-                <tr>
                   <td class="plr-20" style="padding-left:40px;padding-right:40px;">
                     <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td height="24" style="font-size:24px; line-height:24px;height: 24px;">&nbsp;</td>
+                      </tr>
                       <tr>
                         <th class="tflex" width="200" align="left" style="vertical-align:top; padding:0;">
                           <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -403,13 +564,22 @@
                   </td>
                 </tr>
                 <tr>
+                  <td style="padding-left:40px;padding-right:40px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td height="28" style="line-height:28px;height: 28px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
                   <td class="p-0" style="padding-left:40px;padding-right:40px;">
                     <!--[if true]><table align="center" border="0" cellspacing="0" cellpadding="0" width="600"><tr><td align="center" valign="top" width="600" height="340"><![endif]-->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%"
                       style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; max-width: 600px; border-collapse: collapse !important;" role="presentation">
                       <tr>
-                        <td class="mobile-bg" align="center" valign="middle" height="340"
-                          style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; background-color: #000000; background-image: url('https://mpics.tradingview.com/pics/sale/black-hole2024.jpg'); background-size: 100%; background-repeat: no-repeat; background-position: 50% 55%; background-size: 100%; text-align: center; height: 340px; vertical-align: middle;"
+                        <td class="mobile-bg" align="center" valign="middle" height="300"
+                          style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; background-color: #000000; background-image: url('https://mpics.tradingview.com/pics/sale/black-hole2024.jpg'); background-size: 100%; background-repeat: no-repeat; background-position: 50% 55%; background-size: 100%; text-align: center; height: 300px; vertical-align: middle;"
                           bgcolor="#000000" background="https://mpics.tradingview.com/pics/sale/black-hole2024.jpg">
                           <!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:340px;">
                             <v:fill type="frame" src="https://mpics.tradingview.com/pics/sale/black-hole2024.jpg" color="#131722"/>
@@ -418,7 +588,7 @@
                             <![endif]-->
                             <div style="margin: 0 auto; text-align:center;">
                               <h1 style="margin: 0; padding: 0; text-align: center;">
-                                <span class="gradient-cover fs-32" align="center" style="display: inline; margin: 0 auto; padding:0; font-size: 40px; line-height: 40px;">
+                                <span class="gradient-cover fs-32" align="center" style="display: inline; margin: 0 auto; padding:0; font-size: 40px; line-height: 40px; color: #ffffff;">
                                   <span class="gradient fs-32" style="mso-line-height-alt:100%; font-weight: 700; font-size: 40px; line-height: 40px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif;">
                                       Black Friday
                                     </span></span>
@@ -428,21 +598,22 @@
                                   </span></span>
                                 </span>
                               </h1>
-                              <p class="h-4" height="14" style="margin: 0; padding:0; line-height:14px; height: 14px;">&nbsp;</p>
+                              <p class="h-4" height="10" style="margin: 0; padding:0; line-height:10px; height: 10px;">&nbsp;</p>
                               <p class="fs-18"
                                 style="Margin:0;text-align:center;mso-line-height-alt:100%; text-transform: uppercase; font-weight: 600; font-size: 20px; line-height: 20px; letter-spacing: 0.4px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
-                                Starts soon
+                                <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">  
+                                Starts soon</span></span>
                               </p>
-                              <p class="h-18" height="42" style="margin: 0; padding:0; line-height:42px; height: 42px;">&nbsp;</p>
+                              <p class="h-32" height="40" style="margin: 0; padding:0; line-height:40px; height: 40px;">&nbsp;</p>
                               <p class="fs-18" style="Margin:0;text-align:center;mso-line-height-alt:100%; font-weight: 400; font-size: 20px; line-height: 100%; letter-spacing: 0.4px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
                                 <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">
-                                  Up to
+                                  Get up to
                                 </span></span></p>
                               <p class="fs-60" style="margin:0; padding:0; text-align:center;mso-line-height-alt:100%; text-transform: uppercase; font-weight: 700; font-size: 80px; line-height: 100%; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
                                 <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">70% off</span></span></p>
                                 <p height="8" style="margin: 0; padding: 0; line-height:8px; height: 8px;">&nbsp;</p>
-                                <p class="gradient-cover fs-18" style="display: inline-block; margin:0; padding:0; text-align:center;mso-line-height-alt:100%; font-weight: 400; font-size: 20px; line-height: 100%; letter-spacing: 0.4px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
-                                  <span class="gradient fs-18">
+                                <p class="gradient-cover fs-18-gradient" style="display: inline-block; margin:0; padding:0; text-align:center;mso-line-height-alt:100%; font-weight: 400; font-size: 20px; line-height: 20px; letter-spacing: 0.4px; font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif; mso-ascii-font-family: Arial, Helvetica, sans-serif; color: #ffffff;">
+                                  <span class="gradient fs-18-gradient" style="font-size: 20px; line-height: 20px;">
                                     +1 free month
                                   </span>
                                 </p>
@@ -458,7 +629,7 @@
                   <td style="padding-left:40px;padding-right:40px;">
                     <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                       <tr>
-                        <td class="h-16" height="20" style="line-height:20px; height: 20px;">&nbsp;</td>
+                        <td class="h-48" height="14" style="line-height:14px; height: 14px;">&nbsp;</td>
                       </tr>
                     </table>
                   </td>
@@ -494,18 +665,18 @@
                       <tr>
                         <td class="plr-20" align="center" style="padding-left:40px;padding-right:40px;">
                           <div><!--[if mso]>
-                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.tradingview.com/pricing/?coupon={{SALENAME}}&coupon_billing_cycle=y" style="height:56px;v-text-anchor:middle;width:230px;" arcsize="10%" fillcolor="#FF2E3E">
+                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.tradingview.com/pricing/?coupon={{SALENAME}}&coupon_billing_cycle=y" style="height:56px;v-text-anchor:middle;width:248px;" arcsize="10%" fillcolor="#FF2E3E">
                               <w:anchorlock/>
                               <center class="keep-white" style="color:#ffffff!important;font-family:sans-serif;font-size:18px;font-weight:700;">
-                                Explore offers
+                                Get Black Friday offer
                               </center>
                             </v:roundrect>
                           <![endif]-->
                           <a class="flexible-btn" target="_blank" href="https://www.tradingview.com/pricing/?coupon={{SALENAME}}&coupon_billing_cycle=y"
-                          style="background-color: #FF2E3E; background: linear-gradient(90deg, #FF2E3E 44%, #FC5901 72%, #FF9800 106.5%);
+                          style="background-color: #FA3F22; background: linear-gradient(90deg, #FF2E3E 44%, #FC5901 72%, #FF9800 106.5%);
                             border-radius:12px;color:#ffffff;display:inline-block;font-family: -apple-system, BlinkMacSystemFont, ‘Trebuchet MS’, Roboto, SegoeUI, Ubuntu, sans-serif;font-family:sans-serif;font-size:18px;font-weight:590;line-height:24px; letter-spacing: 0.5px; text-align:center;padding:16px 32px;text-decoration:none;-webkit-text-size-adjust:none;mso-hide:all;">
                           <span class="gmail-blend-exclusion-blk"><span class="gmail-blend-difference-blk">
-                            Explore offers
+                            Get Black Friday offer
                           </span></span>
                         </a></div>
                         </td>
