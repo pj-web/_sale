@@ -338,6 +338,8 @@
         background-color: #000;
         mix-blend-mode: screen;
         text-decoration: none !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
       }
 
       u+.iph-gmail-dk .gmail-blend-difference-blk {
@@ -345,6 +347,8 @@
         mix-blend-mode: difference;
         color: #ffffff;
         text-decoration: none !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
       }
       .mobile-bg {
         height: 260px !important;
@@ -594,7 +598,9 @@
                             href="mailto:{{ recipient_email }}" ems:notrack="true">{{ recipient_email }}</a> because
                           you signed up at <a style="text-decoration:none;color:#5B9CF6;" href="{{ host }}"
                             target="_blank">TradingView.com</a>.
-                          {{ "To manage your subscription options or to unsubscribe go to&nbsp;{profile_link}your profile{link_end}.".format(profile_link='<a style="text-decoration:none;color:#5B9CF6;" href="{profile_url}">'.format(profile_url=host + recipient_profile_url + "#notifications"), link_end='</a>') | safe }}
+                          {{ "To manage your subscription options or to unsubscribe go to&nbsp;{profile_link}your profile{link_end}.".format(profile_link='<a target="_blank" android-app="false"
+                          app-argument="none" data-browser-only="true"
+                          rel="noopener noreferrer" style="text-decoration:none;color:#5B9CF6;" href="{profile_url}">'.format(profile_url=host + recipient_profile_url + "#notifications" + "/?webonly=true"), link_end='</a>') | safe }}
                         </td>
                       </tr>
                     </table>
